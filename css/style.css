@@ -106,30 +106,34 @@ header .container .nav-bar {
   }
 }
 
+header .container .nav-bar > li{
+  flex:1;
+}
+
 header .container .nav-bar > li > a {
-  display: block;
   height: 60px;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 0 30px;
   font-size: 16px;
   color: black;
   position: relative;
   overflow: hidden;
   height: 60px;
+  min-width: 100px;
   transition: 0.5s;
 }
 
 @media (max-width: 767px) {
   header .container .nav-bar > li > a {
-    padding: 0 20px;
     font-size: 16px;
     height: 40px;
+    min-width: 83px;
+    
   }
 }
 
-@media (max-width:600px){
+@media (max-width: 600px) {
   header .container .nav-bar > li > a {
     font-size: 12px;
   }
@@ -158,12 +162,11 @@ header .container .nav-bar > li > a:hover {
 /* drop down  */
 
 .drop-down-content {
-  padding-top: 20px;
   display: flex;
   justify-content: space-between;
   position: absolute;
   left: 0;
-  top: 120px;
+  top: calc(100% + 60px);
   width: 100%;
   padding: 20px 25px 14px 25px;
   border-bottom: 4px solid var(--main-color);
@@ -177,7 +180,7 @@ header .container .nav-bar > li > a:hover {
 .drop-down:hover .drop-down-content {
   opacity: 1;
   visibility: visible;
-  top: 60px;
+  top: 100%;
 }
 
 @media (max-width: 992px) {
@@ -191,13 +194,12 @@ header .container .nav-bar > li > a:hover {
   flex-wrap: wrap;
   flex-direction: column;
   flex: 1;
+  column-gap: 28px;
 }
 
-.drop-down-content li{
+.drop-down-content li {
   border-bottom: 1px solid #e9e9e9;
   position: relative;
-  margin-left: 30px;
-   
 }
 
 .drop-down-nav li:before {
@@ -216,7 +218,6 @@ header .container .nav-bar > li > a:hover {
   width: 100%;
 }
 
-
 .drop-down-nav li a {
   height: 50px;
   width: 220px;
@@ -225,37 +226,33 @@ header .container .nav-bar > li > a:hover {
   color: var(--main-color);
   z-index: 2;
   justify-content: flex-start;
-  
 }
 
 @media (min-width: 601px) {
   .drop-down-content .drop-down-nav {
     height: 280px;
   }
-  
-  
 }
-@media (max-width:600px){
-  .drop-down-nav li a{
-    width:350px;
+@media (max-width: 600px) {
+  .drop-down-nav li a {
+    width: 350px;
     font-size: 13px;
     margin-left: 0;
   }
 }
-@media (max-width:1200px){
-  .drop-down-nav li a{
+@media (max-width: 1200px) {
+  .drop-down-nav li a {
     font-size: 15px;
   }
-  
-  header .container .nav-bar > li > a{
-    font-size:15px;
-  }
+
+  /* header .container .nav-bar > li > a {
+    font-size: 15px;
+  } */
 }
 .drop-down-nav li a i {
   margin-right: 10px;
   padding-left: 20px;
 }
-
 
 @media (max-width: 1200px) {
   .drop-down-content img {
