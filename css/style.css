@@ -3,6 +3,7 @@
 :root {
   --main-color: #2196f3;
   --sub-color: #1787e0;
+  --sec-background: #ececec;
 }
 
 html {
@@ -43,7 +44,6 @@ a {
   position: relative;
   z-index: 1;
   transition: 0.2s;
-  
 }
 
 .main-title:after,
@@ -384,7 +384,7 @@ main .container .image img {
   }
 }
 
-.container .text-content {
+main .container .text-content {
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
@@ -393,22 +393,22 @@ main .container .image img {
   flex: 1;
 }
 
-.container .text-content .text-title {
+main .container .text-content .text-title {
   margin-bottom: 20px;
   font-size: 33px;
 }
 
-.container .text-content .text-desc {
+main .container .text-content .text-desc {
   line-height: 1.7;
   color: #272626;
   font-size: 19px;
 }
 @media (max-width: 991px) {
-  .container .text-content .text-title {
+  main .container .text-content .text-title {
     font-size: 25px;
   }
 
-  .container .text-content .text-desc {
+  main .container .text-content .text-desc {
     text-align: center;
     font-size: 17px;
     width: 80%;
@@ -416,18 +416,18 @@ main .container .image img {
 }
 
 @media (max-width: 767px) {
-  .container .text-content .text-title {
+  main .container .text-content .text-title {
     font-size: 19px;
   }
 
-  .container .text-content .text-desc {
+  main .container .text-content .text-desc {
     text-align: center;
     font-size: 13px;
     width: 80%;
   }
 }
 
-.container .image {
+main .container .image {
   animation-name: main-image;
   animation-iteration-count: infinite;
   animation-direction: alternate;
@@ -476,10 +476,9 @@ main .go-down {
 
 /* article-section  */
 
-.article{
-  margin:50px 0;
+.article {
+  padding: 100px 0;
 }
-
 
 .article .container {
   display: grid;
@@ -490,13 +489,13 @@ main .go-down {
 
 .article .card {
   box-shadow: 2px 2px 8px 0 #ccc;
-  transition:0.5s;
+  transition: 0.5s;
 }
 
-.article .card:hover{
+.article .card:hover {
   box-shadow: 2px 2px 15px 0px #afafaf;
-  bottom:20px;
-  transform:translateY(-20px)
+  bottom: 20px;
+  transform: translateY(-20px);
 }
 
 .article .card img {
@@ -534,7 +533,7 @@ main .go-down {
   transform: translateY(-50%);
 }
 
-.card:hover  .card-read-more i{
+.card:hover .card-read-more i {
   animation-name: read-more;
   animation-duration: 0.5s;
   animation-iteration-count: infinite;
@@ -544,5 +543,67 @@ main .go-down {
 @keyframes read-more {
   100% {
     right: 12px;
+  }
+}
+
+/* gallery section  */
+
+.gallery {
+  padding: 100px 0;
+  background-color: var(--sec-background);
+}
+
+.gallery .container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 30px;
+}
+
+.gallery-item {
+  padding: 20px;
+  background-color: #fff;
+}
+
+.gallery-item .image {
+  overflow: hidden;
+  position: relative;
+}
+
+.gallery-item .image img {
+  width: 100%;
+  transition: 0.4s
+}
+
+.gallery-item .image::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(255, 255, 255, 0.301);
+  z-index: 3;
+  width: 0;
+  height: 0;
+  opacity: 0;
+}
+
+.gallery-item .image:hover::after {
+  animation-name: fill-gallery-item;
+  animation-duration: 0.7s;
+}
+
+.gallery-item:hover .image img {
+  transform: scale(1.1) rotate(4deg);
+}
+@keyframes fill-gallery-item {
+  0%,
+  40% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+    width: 200%;
+    height: 200%;
   }
 }
