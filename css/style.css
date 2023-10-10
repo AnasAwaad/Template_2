@@ -33,6 +33,89 @@ a {
   text-decoration: none;
 }
 
+.main-title {
+  padding: 15px 20px;
+  width: fit-content;
+  margin: 0px auto 80px;
+  font-size: 26px;
+  font-weight: bold;
+  border: 2px solid #000;
+  position: relative;
+  z-index: 1;
+  transition: 0.2s;
+  
+}
+
+.main-title:after,
+.main-title:before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 13px;
+  height: 13px;
+  background-color: var(--main-color);
+  border-radius: 50%;
+  transition: 0.4s;
+  z-index: -1;
+}
+
+.main-title:before {
+  left: -30px;
+}
+
+.main-title:after {
+  right: -30px;
+}
+
+.main-title:hover {
+  border: 2px solid #fff;
+  color: #fff;
+  transition-delay: 0.5s; /* wait animation then change color */
+}
+
+.main-title:hover:before {
+  animation-name: left-ball;
+  animation-duration: 0.5s;
+  animation-fill-mode: forwards;
+}
+
+.main-title:hover:after {
+  animation-name: right-ball;
+  animation-duration: 0.5s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes left-ball {
+  50% {
+    left: 0;
+    width: 13px;
+    height: 13px;
+  }
+
+  100% {
+    left: 0;
+    width: 51%;
+    height: 100%;
+    border-radius: 0;
+  }
+}
+
+@keyframes right-ball {
+  50% {
+    right: 0;
+    width: 13px;
+    height: 13px;
+  }
+
+  100% {
+    right: 0;
+    width: 50%;
+    height: 100%;
+    border-radius: 0;
+  }
+}
+
 /* container  */
 .container {
   padding-left: 15px;
@@ -106,8 +189,8 @@ header .container .nav-bar {
   }
 }
 
-header .container .nav-bar > li{
-  flex:1;
+header .container .nav-bar > li {
+  flex: 1;
 }
 
 header .container .nav-bar > li > a {
@@ -129,7 +212,6 @@ header .container .nav-bar > li > a {
     font-size: 16px;
     height: 40px;
     min-width: 83px;
-    
   }
 }
 
@@ -174,27 +256,22 @@ header .container .nav-bar > li > a:hover {
   opacity: 0;
   transition: 0.3s;
   background-color: #fff;
-  z-index: 99;
+  z-index: -1;
 }
 
 .drop-down:hover .drop-down-content {
   opacity: 1;
   visibility: visible;
   top: 100%;
-}
-
-@media (max-width: 992px) {
-  .drop-down:hover .drop-down-content {
-    top: 80px;
-  }
+  z-index: 99;
 }
 
 .drop-down-content .drop-down-nav {
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
-  flex: 1;
   column-gap: 28px;
+  flex: 1;
 }
 
 .drop-down-content li {
@@ -235,7 +312,6 @@ header .container .nav-bar > li > a:hover {
 }
 @media (max-width: 600px) {
   .drop-down-nav li a {
-    width: 350px;
     font-size: 13px;
     margin-left: 0;
   }
@@ -395,5 +471,78 @@ main .go-down {
   40%,
   60% {
     bottom: 50px;
+  }
+}
+
+/* article-section  */
+
+.article{
+  margin:50px 0;
+}
+
+
+.article .container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 30px;
+  /* margin:100px 0;   */
+}
+
+.article .card {
+  box-shadow: 2px 2px 8px 0 #ccc;
+  transition:0.5s;
+}
+
+.article .card:hover{
+  box-shadow: 2px 2px 15px 0px #afafaf;
+  bottom:20px;
+  transform:translateY(-20px)
+}
+
+.article .card img {
+  width: 100%;
+}
+
+.article .card .card-info {
+  padding: 15px;
+}
+
+.article .card .card-info-title {
+  margin-bottom: 15px;
+}
+
+.article .card .card-info-desc {
+  color: #777;
+}
+
+.article .card .card-read-more {
+  padding: 16px;
+  border-top: 1px solid #e6e6e7;
+  color: var(--main-color);
+  position: relative;
+}
+
+.card-read-more a {
+  color: var(--main-color);
+  font-weight: bold;
+}
+
+.card-read-more i {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.card:hover  .card-read-more i{
+  animation-name: read-more;
+  animation-duration: 0.5s;
+  animation-iteration-count: infinite;
+  animation-fill-mode: forwards;
+}
+
+@keyframes read-more {
+  100% {
+    right: 12px;
   }
 }
